@@ -4,7 +4,7 @@ import { Grid } from "./grid.js";
 const ALIVE_COLOR = 'yellow';
 const DEAD_COLOR = 'grey';
 const CANVAS_BACKGROUND_COLOR = 'black';
-const ANIMATION_MS_INTERVAL = 1; // milliseconds
+const ANIMATION_MS_INTERVAL = 50; // milliseconds
 
 const performanceInfo = {times: []};
 let cycles = 0;
@@ -28,7 +28,7 @@ function drawGrid(grid, ctx) {
   let deadColor = DEAD_COLOR;
 
   // TODO implement dead cells coloring?
-  
+
   ctx.fillStyle = aliveColor;
   grid.grid.forEach((cell, i) => {
     if(cell) {
@@ -71,21 +71,21 @@ function animate(timestamp) {
 
 
   // Very homebrew performance testing
-  cycles++;
-  performanceInfo.times.push(dT);
-  if(cycles > 1000) {
-    console.log("max iterations reached");
-    performanceInfo.size = grid.grid.length;
-    performanceInfo.mean = performanceInfo.times.reduce((acc, value, i) => {
-      if(i > 1) { 
-        return acc + value;
-      }
-      return acc;
-    }, 0) / (performanceInfo.times.length - 2);
+  // cycles++;
+  // performanceInfo.times.push(dT);
+  // if(cycles > 1000) {
+  //   console.log("max iterations reached");
+  //   performanceInfo.size = grid.grid.length;
+  //   performanceInfo.mean = performanceInfo.times.reduce((acc, value, i) => {
+  //     if(i > 1) { 
+  //       return acc + value;
+  //     }
+  //     return acc;
+  //   }, 0) / (performanceInfo.times.length - 2);
 
-    console.log(performanceInfo)
-    return;
-  }
+  //   console.log(performanceInfo)
+  //   return;
+  // }
 
 
 
